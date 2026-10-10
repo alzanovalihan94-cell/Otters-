@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уютный мир выдр 🦦</title>
+    <!-- Подключаем Tailwind CSS для красивого и быстрого дизайна -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        otterDark: '#1a120b',
+                        otterBrown: '#2d2016',
+                        otterCard: 'rgba(45, 32, 22, 0.75)',
+                        otterAccent: '#0284c7',
+                        otterCyan: '#38bdf8',
+                        otterSand: '#fef3c7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #120d09;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        /* Эффект стекла (Glassmorphism) */
+        .glass {
+            background: rgba(35, 24, 17, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+        /* Анимация плавания выдры */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        /* Стили для канваса с пузырьками */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
+
+    <!-- Живой задний фон (Canvas: пузырьки и капли) -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Основной контейнер -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+        
+        <!-- Шапка (Header) -->
+        <header class="w-full max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl animate-bounce">🦦</span>
+                <span class="text-xl font-bold tracking-wide bg-gradient-to-r from-cyan-400 to-amber-200 bg-clip-text text-transparent">ВыдраЛенд</span>
+            </div>
+            <nav class="hidden md:flex gap-6 text-sm font-medium text-cyan-200/80">
+                <a href="#facts" class="hover:text-cyan-300 transition">Факты</a>
+                <a href="#gallery" class="hover:text-cyan-300 transition">Галерея</a>
+                <a href="#interactive" class="hover:text-cyan-300 transition">Интерактив</a>
+                <a href="#github-guide" class="hover:text-cyan-300 transition">GitHub Guide</a>
+            </nav>
+        </header>
+
+        <!-- Главный экран (Hero) -->
+        <main class="w-full max-w-5xl mx-auto px-6 py-12 flex-grow flex flex-col items-center text-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-cyan-300 text-xs md:text-sm font-semibold mb-6 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                Самый уютный уголок рунета о речных пушистиках
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Погрузитесь в волшебный <br>
+                <span class="bg-gradient-to-r from-amber-300 via-sky-300 to-cyan-400 bg-clip-text text-transparent">мир милых выдр</span>
+            </h1>
+
+            <p class="max-w-2xl text-base md:text-lg text-amber-100/70 mb-10">
+                Знаете ли вы, почему выдры держатся за лапки во сне и носят с собой любимый камень в специальном кармашке? Давайте узнаем это вместе!
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <a href="#facts" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-sky-500 font-bold text-white shadow-lg shadow-cyan-500/30 hover:scale-105 transition transform">
+                    Узнать факты 🐾
+                </a>
+                <a href="#interactive" class="px-8 py-3.5 rounded-2xl glass font-bold text-cyan-200 hover:bg-cyan-950/40 hover:scale-105 transition transform">
+                    Погладить выдру ✨
+                </a>
+            </div>
+
+            <!-- Секция фактов -->
+            <section id="facts" class="w-full py-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-cyan-200">Удивительные факты о выдрах</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    
+                    <div class="glass p-6 rounded-3xl shadow-xl hover:border-cyan-400/50 transition duration-300 animate-float" style="animation-delay: 0s;">
+                        <div class="text-3xl mb-4">🤝</div>
+                        <h3 class="text-lg font-bold mb-2 text-amber-200">Держатся за лапки</h3>
+                        <p class="text-sm text-amber-100/70">Спят на воде, взявшись за руки, чтобы быстрое течение не разлучило их во время отдыха или ночного сна.</p>
+                    </div>
+
+                    <div class="glass p-6 rounded-3xl shadow-xl hover:border-cyan-400/50 transition duration-300 animate-float" style="animation-delay: 1.2s;">
+                        <div class="text-3xl mb-4">💎</div>
+                        <h3 class="text-lg font-bold mb-2 text-amber-200">Личный кармашек</h3>
+                        <p class="text-sm text-amber-100/70">У них есть свободная складка кожи под лапкой — настоящий карман, где они хранят свой самый любимый камень для раскалывания ракушек.</p>
+                    </div>
+
+                    <div class="glass p-6 rounded-3xl shadow-xl hover:border-cyan-400/50 transition duration-300 animate-float" style="animation-delay: 2.4s;">
+                        <div class="text-3xl mb-4">✨</div>
+                        <h3 class="text-lg font-bold mb-2 text-amber-200">Супер-шубка</h3>
+                        <p class="text-sm text-amber-100/70">Шерсть выдры состоит из 150 000 волосков на квадратный дюйм — это плотнее, чем у любого другого животного в мире!</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Галерея с выдрами -->
+            <section id="gallery" class="w-full py-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-cyan-200">Милые пушистики</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    
+                    <div class="relative overflow-hidden rounded-3xl glass group h-64">
+                        <img src="https://images.unsplash.com/photo-1559288164-152e2e921d28?q=80&w=600&auto=format&fit=crop" alt="Выдра в воде" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                            <p class="text-sm font-medium text-cyan-200">Счастливая речная выдра 🌊</p>
+                        </div>
+                    </div>
+
+                    <div class="relative overflow-hidden rounded-3xl glass group h-64">
+                        <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=600&auto=format&fit=crop" alt="Морская выдра" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class
